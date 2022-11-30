@@ -28,16 +28,8 @@ export const MonitoriaPage = () => {
         return monitoria ? (
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
-          {monitoria.map((item: { alunos: Array<Alunos>; horario: string | null | undefined; sala: string | null | undefined; }, index) => 
-            {item.alunos.map((aluno, indexAluno) => 
-              {if (aluno === route.params?.nome) {
-                  <>
-                    <Text style={styles.text}>Horário: {item.horario}</Text>
-                    <Text style={styles.text}>Sala: {item.sala}</Text>
-                  </>
-               }}
-            
-            )})}
+          <Text style={styles.text}>Horário: {monitoria[0].horario}</Text>
+          <Text style={styles.text}>Sala: {monitoria[0].sala}</Text>
          
         </View>
 
