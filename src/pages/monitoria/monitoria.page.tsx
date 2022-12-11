@@ -1,7 +1,8 @@
-import { Text, View, SafeAreaView, FlatList } from 'react-native';
+import { Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { styles } from './monitoria.style';
 import { useRoute } from '@react-navigation/native';
+import { Divider } from 'react-native-paper';
 
 interface Monitoria {
   nome: string;
@@ -24,11 +25,30 @@ export const MonitoriaPage = () => {
       })
     }, []);
 
+    const renderItem = ({ dia }: any) => (
+        <TouchableOpacity style={styles.row}>
+          <View style={styles.item}>
+            <Text style={styles.text}>teste</Text>
+            <Text style={styles.text}>{dia}</Text>
+            {/* <Text style={styles.text}>{item.abrevCurso}</Text> */}
+
+          </View>
+          <Divider />
+        </TouchableOpacity>
+      );
+
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
+        
         {monitoria?.map(monitor => (
           monitor.nome === route.params?.nome ? (
+            // <FlatList 
+            //         data={[JSON.stringify(monitor.diasDaSemana.split(','))]}
+            //         renderItem={renderItem}
+            //         keyExtractor={(item) => monitor.nome}
+            //         ItemSeparatorComponent={() => <Divider />}
+            //     />
           <React.Fragment key={monitor.matricula}>
             <Text style={styles.text}>{monitor?.nome}</Text>
             <Text style={styles.text}>Disciplina: {monitor?.disciplina}</Text>

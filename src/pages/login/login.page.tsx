@@ -14,7 +14,7 @@ export function LoginPage() {
 
     const handleHomePage = async (item: any) => {
         if (email.match(/@academico.ifpb.edu.br/g) && password.length > 3){
-            navigation.navigate('Home', {nome: item.name});
+            navigation.navigate('Home');
         } else {
             return Alert.alert('Verifique os campos.')
         }
@@ -22,7 +22,9 @@ export function LoginPage() {
       
     return (
         <View>
-            <Image style={styles.logo} source={Logo} />
+            <View style={styles.logoBack>
+                <Image style={styles.logo} source={Logo} />
+            </View>
             <View style={styles.content}>
                 <InputComponent placeholder="Email" value={email} onChangeText={setEmail}/>
                 <InputComponent placeholder="Senha" value={password} onChangeText={setPassword} secureTextEntry={true} />
