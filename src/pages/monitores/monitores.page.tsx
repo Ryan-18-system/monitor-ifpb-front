@@ -4,6 +4,7 @@ import {Accordion} from "../../components/accordion/accordion.component"
 import {Search} from "../../components/search/search.component"
 import { Divider } from 'react-native-paper';
 import { FlatList, TextInput, View } from "react-native";
+import { FlatList, TextInput, View } from "react-native";
 import {styles} from "./monitores.style"
 import { useNavigation } from "@react-navigation/native";
 
@@ -16,7 +17,7 @@ export const MonitoresPage = () => {
     const navigation = useNavigation();
 
     const handleContatoMonitor = (item: any) => {
-      navigation.navigate('ContatoMonitorPage', {nome: item.nome, contato: item.contato, img: item.urlImage});
+      navigation.navigate('ContatoMonitorPage', {nome: item.nome, contato: item.contato, img: item.urlImage, curso: item.abrevCurso});
     };
 
     const handleHorariosMonitor = (item: any) => {
@@ -33,7 +34,7 @@ export const MonitoresPage = () => {
       }, []);
 
       const searchFilterFunction = (text: string) => {
-        if (text) {
+        if (text != null) {
           const newData = monitores.filter(
             function (item: any) {
               const itemData = item.nome
@@ -43,7 +44,6 @@ export const MonitoresPage = () => {
               return itemData.indexOf(textData) > -1;
           });
           setFilteredData(newData);
-          console.log(newData)
           setMonitores(newData);
           setSearch(text);
         } else {
@@ -53,9 +53,8 @@ export const MonitoresPage = () => {
       };
 
       const renderItem = ({ item }: any) => (
-        <View>
+        <View style={styles.container}>
           <Accordion curso={item.abrevCurso} avatar={item.urlImage} name={item.nome} disciplina={item.nomeCurso} onTapContatos={() => handleContatoMonitor(item)} onTapHorarios={() => handleHorariosMonitor(item)}  />
-          <Divider />
         </View>
       );
       

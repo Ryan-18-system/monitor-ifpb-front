@@ -4,7 +4,7 @@ import { styles } from './monitoria.style';
 import { useRoute } from '@react-navigation/native';
 import { Divider } from 'react-native-paper';
 
-interface Monitoria {
+export interface Monitoria {
   nome: string;
   disciplina: string;
   horario: string;
@@ -53,8 +53,15 @@ export const MonitoriaPage = () => {
             <Text style={styles.text}>{monitor?.nome}</Text>
             <Text style={styles.text}>Disciplina: {monitor?.disciplina}</Text>
             <Text style={styles.text}>Sala: {monitor?.sala}</Text>
-            <Text style={styles.text}>{monitor?.diasDaSemana}</Text>
-            <Text style={styles.text}>{monitor?.horario}</Text>
+            <Text style={styles.text}>{monitor?.diasDaSemana[0]}</Text>
+            <Text style={styles.text}>{monitor?.horario[0]}</Text>
+
+            <Text style={styles.text}>{monitor?.diasDaSemana[1]}</Text>
+            <Text style={styles.text}>{monitor?.horario[1]}</Text>
+            
+            <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
+            <Text style={styles.text}>{monitor?.horario[2]}</Text>
+
           </React.Fragment>
           ) : <></>
         ))}
