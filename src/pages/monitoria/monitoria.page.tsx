@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { styles } from './monitoria.style';
 import { useRoute } from '@react-navigation/native';
@@ -14,33 +14,23 @@ export interface Monitoria {
 }
 
 export const MonitoriaPage = () => {
-    const route = useRoute();
-    const [monitoria, setMonitoria] = useState<Monitoria[]>();
+  const route = useRoute();
+  const [monitoria, setMonitoria] = useState<Monitoria[]>();
 
-    useEffect(() => {
-      fetch('https://backend-monitor-production.up.railway.app/alunos')
+  useEffect(() => {
+    fetch('https://backend-monitor-production.up.railway.app/alunos')
       .then(response => response.json())
       .then((data) => {
         setMonitoria(data)
       })
-    }, []);
+  }, []);
 
-    const renderItem = ({ dia }: any) => (
-        <TouchableOpacity style={styles.row}>
-          <View style={styles.item}>
-            <Text style={styles.text}>teste</Text>
-            <Text style={styles.text}>{dia}</Text>
-            {/* <Text style={styles.text}>{item.abrevCurso}</Text> */}
 
-          </View>
-          <Divider />
-        </TouchableOpacity>
-      );
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.list}>
-        
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.list}>
+
         {monitoria?.map(monitor => (
           monitor.nome === route.params?.nome ? (
             // <FlatList 
@@ -49,25 +39,55 @@ export const MonitoriaPage = () => {
             //         keyExtractor={(item) => monitor.nome}
             //         ItemSeparatorComponent={() => <Divider />}
             //     />
-          <React.Fragment key={monitor.matricula}>
-            <Text style={styles.text}>{monitor?.nome}</Text>
-            <Text style={styles.text}>Disciplina: {monitor?.disciplina}</Text>
-            <Text style={styles.text}>Sala: {monitor?.sala}</Text>
-            <Text style={styles.text}>{monitor?.diasDaSemana[0]}</Text>
-            <Text style={styles.text}>{monitor?.horario[0]}</Text>
+            <React.Fragment key={monitor.matricula}>
+              <View style={styles.bgHeader}>
 
-            <Text style={styles.text}>{monitor?.diasDaSemana[1]}</Text>
-            <Text style={styles.text}>{monitor?.horario[1]}</Text>
-            
-            <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
-            <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                <View style={styles.foto}>
+                  <Image style={styles.foto} source={{ uri: route.params?.img }} />
+                </View>
+                <View>
+                  <Text style={styles.moniNome}>{monitor?.nome}</Text>
+                  <View style={styles.descBottom}>
+                    <Text style={styles.textDisci}>Disc: {monitor?.disciplina}</Text>
+                    <Text style={styles.textMoni}>Sala: {monitor?.sala}</Text>
+                  </View>
+                </View>
+              </View>
 
-          </React.Fragment>
+              <View style={styles.week}>
+
+                <View style={styles.day}>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[0]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[0]}</Text>
+                </View>
+                <Divider />
+                <View style={styles.day}>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[1]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[1]}</Text>
+                </View>
+                <Divider />
+                <View style={styles.day}>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                </View>
+                <Divider />
+                <View style={styles.day}>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                </View>
+                <Divider />
+                <View style={styles.day}>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                </View>
+              </View>
+
+            </React.Fragment>
           ) : <></>
         ))}
-        </View>
+      </View>
 
-      </SafeAreaView>
+    </SafeAreaView>
 
-    )
+  )
 }

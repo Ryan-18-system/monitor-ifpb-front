@@ -22,9 +22,7 @@ export function LoginPage() {
       
     return (
         <View>
-            <View style={styles.logoBack>
-                <Image style={styles.logo} source={Logo} />
-            </View>
+            <Image style={styles.logo} source={Logo} />
             <View style={styles.content}>
                 <InputComponent placeholder="Email" value={email} onChangeText={setEmail}/>
                 <InputComponent placeholder="Senha" value={password} onChangeText={setPassword} secureTextEntry={true} />

@@ -4,7 +4,6 @@ import {Accordion} from "../../components/accordion/accordion.component"
 import {Search} from "../../components/search/search.component"
 import { Divider } from 'react-native-paper';
 import { FlatList, TextInput, View } from "react-native";
-import { FlatList, TextInput, View } from "react-native";
 import {styles} from "./monitores.style"
 import { useNavigation } from "@react-navigation/native";
 
@@ -21,7 +20,7 @@ export const MonitoresPage = () => {
     };
 
     const handleHorariosMonitor = (item: any) => {
-      navigation.navigate('MonitoriaPage', {nome: item.nome});
+      navigation.navigate('MonitoriaPage', {nome: item.nome,img: item.urlImage});
     };
 
     useEffect(() => {
