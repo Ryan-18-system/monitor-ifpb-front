@@ -46,7 +46,9 @@ export const MonitoriaPage = () => {
                   <Image style={styles.foto} source={{ uri: route.params?.img }} />
                 </View>
                 <View>
-                  <Text style={styles.moniNome}>{monitor?.nome}</Text>
+                  <Text style={styles.moniNome}>
+                    {monitor?.nome.split(' ').length <= 2 ? monitor?.nome : monitor?.nome.split(' ')[0]+" "+monitor?.nome.split(' ')[1]}
+                  </Text>
                   <View style={styles.descBottom}>
                     <Text style={styles.textDisci}>Disc: {monitor?.disciplina}</Text>
                     <Text style={styles.textMoni}>Sala: {monitor?.sala}</Text>
@@ -57,8 +59,8 @@ export const MonitoriaPage = () => {
               <View style={styles.week}>
 
                 <View style={styles.day}>
-                  <Text style={styles.text}>{monitor?.diasDaSemana[0]}</Text>
-                  <Text style={styles.text}>{monitor?.horario[0]}</Text>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[0]+" "}</Text>
+                  <Text style={styles.text}>{monitor?.horario[0]+" "}</Text>
                 </View>
                 <Divider />
                 <View style={styles.day}>
@@ -72,13 +74,13 @@ export const MonitoriaPage = () => {
                 </View>
                 <Divider />
                 <View style={styles.day}>
-                  <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
-                  <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[3]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[3]}</Text>
                 </View>
                 <Divider />
                 <View style={styles.day}>
-                  <Text style={styles.text}>{monitor?.diasDaSemana[2]}</Text>
-                  <Text style={styles.text}>{monitor?.horario[2]}</Text>
+                  <Text style={styles.text}>{monitor?.diasDaSemana[4]}</Text>
+                  <Text style={styles.text}>{monitor?.horario[4]}</Text>
                 </View>
               </View>
 

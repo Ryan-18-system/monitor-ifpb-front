@@ -11,17 +11,19 @@ export const styles = StyleSheet.create({
         height:100,
         borderRadius:50,
         borderColor: '#FFFFFF',
-        marginRight:20
+        marginRight:10
     },
     moniNome:{
         fontSize:30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom:10
     },
     textDisci:{
         backgroundColor:'#FFCE84',
         borderRadius:10,
-        width:135,
-        paddingHorizontal:10
+        width:120,
+        paddingHorizontal:10,
+        marginRight:5
         
     },
     textMoni:{
@@ -62,6 +64,10 @@ export const styles = StyleSheet.create({
     day:{
         padding:10,
         marginBottom:7,
+    },
+    dayGrey:{
+        padding:10,
+        backgroundColor:'#dedede'
     },
 
     image: {
